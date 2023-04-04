@@ -9,15 +9,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
+/*import javax.validation.Valid;*/
 
 @Controller
 public class TradeController {
     // TODO: Inject Trade service
 
     @RequestMapping("/trade/list")
-    public String home(Model model)
-    {
+    public String home(Model model) {
         // TODO: find all Trade, add to model
         return "trade/list";
     }
@@ -28,7 +27,7 @@ public class TradeController {
     }
 
     @PostMapping("/trade/validate")
-    public String validate(@Valid Trade trade, BindingResult result, Model model) {
+    public String validate(/*@Valid*/ Trade trade, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Trade list
         return "trade/add";
     }
@@ -40,8 +39,8 @@ public class TradeController {
     }
 
     @PostMapping("/trade/update/{id}")
-    public String updateTrade(@PathVariable("id") Integer id, @Valid Trade trade,
-                             BindingResult result, Model model) {
+    public String updateTrade(@PathVariable("id") Integer id, /*@Valid*/ Trade trade,
+                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Trade and return Trade list
         return "redirect:/trade/list";
     }

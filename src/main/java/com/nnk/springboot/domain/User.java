@@ -1,21 +1,25 @@
 package com.nnk.springboot.domain;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "Users")
 public class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Integer id;
-    @NotBlank(message = "Username is mandatory")
+    //@NotBlank(message = "Username is mandatory")
+    @Column(name = "username")
     private String username;
-    @NotBlank(message = "Password is mandatory")
+    //@NotBlank(message = "Password is mandatory")
+    @Column(name = "password")
     private String password;
-    @NotBlank(message = "FullName is mandatory")
+    //@NotBlank(message = "FullName is mandatory")
+    @Column(name = "fullname")
     private String fullname;
-    @NotBlank(message = "Role is mandatory")
+    //@NotBlank(message = "Role is mandatory")
+    @Column(name = "role")
     private String role;
 
     public Integer getId() {

@@ -9,15 +9,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
+/*import javax.validation.Valid;*/
 
 @Controller
 public class RuleNameController {
     // TODO: Inject RuleName service
 
     @RequestMapping("/ruleName/list")
-    public String home(Model model)
-    {
+    public String home(Model model) {
         // TODO: find all RuleName, add to model
         return "ruleName/list";
     }
@@ -28,7 +27,7 @@ public class RuleNameController {
     }
 
     @PostMapping("/ruleName/validate")
-    public String validate(@Valid RuleName ruleName, BindingResult result, Model model) {
+    public String validate(/*@Valid*/ RuleName ruleName, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return RuleName list
         return "ruleName/add";
     }
@@ -40,8 +39,8 @@ public class RuleNameController {
     }
 
     @PostMapping("/ruleName/update/{id}")
-    public String updateRuleName(@PathVariable("id") Integer id, @Valid RuleName ruleName,
-                             BindingResult result, Model model) {
+    public String updateRuleName(@PathVariable("id") Integer id, /*@Valid*/ RuleName ruleName,
+                                 BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update RuleName and return RuleName list
         return "redirect:/ruleName/list";
     }

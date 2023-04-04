@@ -9,15 +9,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
+/*import javax.validation.Valid;*/
 
 @Controller
 public class CurveController {
     // TODO: Inject Curve Point service
 
     @RequestMapping("/curvePoint/list")
-    public String home(Model model)
-    {
+    public String home(Model model) {
         // TODO: find all Curve Point, add to model
         return "curvePoint/list";
     }
@@ -28,7 +27,7 @@ public class CurveController {
     }
 
     @PostMapping("/curvePoint/validate")
-    public String validate(@Valid CurvePoint curvePoint, BindingResult result, Model model) {
+    public String validate(/*@Valid*/ CurvePoint curvePoint, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Curve list
         return "curvePoint/add";
     }
@@ -40,8 +39,8 @@ public class CurveController {
     }
 
     @PostMapping("/curvePoint/update/{id}")
-    public String updateBid(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
-                             BindingResult result, Model model) {
+    public String updateBid(@PathVariable("id") Integer id, /*@Valid*/ CurvePoint curvePoint,
+                            BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Curve and return Curve list
         return "redirect:/curvePoint/list";
     }
