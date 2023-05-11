@@ -1,6 +1,10 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 import java.sql.Timestamp;
 
@@ -9,48 +13,64 @@ import java.sql.Timestamp;
 @Table(name = "Trade")
 public class Trade {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "tradeId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Integer tradeId;
-    @Column(name = "account")
+    @Column(length = 30)
+    @Size(max = 30)
+    @NotBlank(message = "Account is mandatory")
     private String account;
-    @Column(name = "type")
+    @Column(length = 30)
+    @Size(max = 30)
+    @NotBlank(message = "Type is mandatory")
     private String type;
-    @Column(name = "buyQuantity")
+    @Column
+    @NotNull(message = "Buy quantity is mandatory")
+    @Positive
     private Double buyQuantity;
-    @Column(name = "sellQuantity")
+    @Column
     private Double sellQuantity;
-    @Column(name = "buyPrice")
+    @Column
     private Double buyPrice;
-    @Column(name = "sellPrice")
+    @Column
     private Double sellPrice;
-    @Column(name = "benchmark")
-    private String benchmark;
-    @Column(name = "tradeDate")
+    @Column
     private Timestamp tradeDate;
-    @Column(name = "security")
+    @Column(length = 125)
+    @Size(max = 125)
     private String security;
-    @Column(name = "status")
+    @Column(length = 10)
+    @Size(max = 10)
     private String status;
-    @Column(name = "trader")
+    @Column(length = 125)
+    @Size(max = 125)
     private String trader;
-    @Column(name = "book")
+    @Column(length = 125)
+    @Size(max = 125)
+    private String benchmark;
+    @Column(length = 125)
+    @Size(max = 125)
     private String book;
-    @Column(name = "creationName")
+    @Column
     private String creationName;
-    @Column(name = "creationDate")
+    @Column
     private Timestamp creationDate;
-    @Column(name = "revisionName")
+    @Column(length = 125)
+    @Size(max = 125)
     private String revisionName;
-    @Column(name = "revisionDate")
+    @Column
     private Timestamp revisionDate;
-    @Column(name = "dealName")
+    @Column(length = 125)
+    @Size(max = 125)
     private String dealName;
-    @Column(name = "dealType")
+    @Column(length = 125)
+    @Size(max = 125)
     private String dealType;
-    @Column(name = "sourceListId")
+    @Column(length = 125)
+    @Size(max = 125)
     private String sourceListId;
-    @Column(name = "side")
+    @Column(length = 125)
+    @Size(max = 125)
     private String side;
 
 
@@ -67,6 +87,9 @@ public class Trade {
         return tradeId;
     }
 
+    public void setTradeId(Integer tradeId) {
+        this.tradeId = tradeId;
+    }
 
     public String getAccount() {
         return account;

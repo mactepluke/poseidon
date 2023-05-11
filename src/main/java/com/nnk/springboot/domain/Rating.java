@@ -1,29 +1,36 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "Rating")
 public class Rating {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "moodysRating")
+    @Column(length = 125)
+    @Size(max = 125)
     private String moodysRating;
-    @Column(name = "sandPRating")
-    private String sandPRating;
-    @Column(name = "fitchRating")
+    @Column(length = 125)
+    @Size(max = 125)
+    private String sandpRating;
+    @Column(length = 125)
+    @Size(max = 125)
     private String fitchRating;
-    @Column(name = "orderNumber")
+    @Column
+    @Positive
+    @NotNull(message = "Order number is mandatory")
     private Integer orderNumber;
 
     public Rating() {
     }
 
-    public Rating(String moodysRating, String sandPRating, String fitchRating, Integer orderNumber) {
+    public Rating(String moodysRating, String sandpRating, String fitchRating, Integer orderNumber) {
         this.moodysRating = moodysRating;
-        this.sandPRating = sandPRating;
+        this.sandpRating = sandpRating;
         this.fitchRating = fitchRating;
         this.orderNumber = orderNumber;
     }
@@ -32,6 +39,9 @@ public class Rating {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getMoodysRating() {
         return moodysRating;
@@ -41,12 +51,12 @@ public class Rating {
         this.moodysRating = moodysRating;
     }
 
-    public String getSandPRating() {
-        return sandPRating;
+    public String getSandpRating() {
+        return sandpRating;
     }
 
-    public void setSandPRating(String sandPRating) {
-        this.sandPRating = sandPRating;
+    public void setSandpRating(String sandPRating) {
+        this.sandpRating = sandPRating;
     }
 
     public String getFitchRating() {

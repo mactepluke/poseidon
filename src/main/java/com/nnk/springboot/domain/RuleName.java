@@ -1,25 +1,34 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "RuleName")
 public class RuleName {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Integer id;
-    @Column(name = "name")
+    @Column(length = 125)
+    @Size(max = 125)
+    @NotBlank(message = "Name is mandatory")
     private String name;
-    @Column(name = "description")
+    @Column(length = 125)
+    @Size(max = 125)
     private String description;
-    @Column(name = "json")
+    @Column(length = 125)
+    @Size(max = 125)
     private String json;
-    @Column(name = "template")
+    @Column(length = 125)
+    @Size(max = 125)
     private String template;
-    @Column(name = "sqlStr")
+    @Column(length = 125)
+    @Size(max = 125)
     private String sqlStr;
-    @Column(name = "sqlPart")
+    @Column(length = 125)
+    @Size(max = 125)
     private String sqlPart;
 
     public RuleName() {
@@ -38,6 +47,9 @@ public class RuleName {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

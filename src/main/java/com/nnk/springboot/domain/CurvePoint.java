@@ -1,6 +1,8 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 import java.sql.Timestamp;
 
@@ -9,12 +11,21 @@ import java.sql.Timestamp;
 @Table(name = "CurvePoint")
 public class CurvePoint {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column
+    @Positive(message = "Must be positive")
+    @NotNull(message = "Curve Id is mandatory")
     private Integer curveId;
+    @Column
     private Timestamp asOfDate;
+    @Column
+    @Positive(message = "Must be positive")
     private Double term;
+    @Column
+    @Positive(message = "Must be positive")
     private Double value;
+    @Column
     private Timestamp creationDate;
 
     public CurvePoint() {
@@ -36,6 +47,10 @@ public class CurvePoint {
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getCurveId() {

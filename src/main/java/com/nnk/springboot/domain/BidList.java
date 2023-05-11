@@ -1,57 +1,76 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "BidList")
 public class BidList {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "BidListId")
-    private Integer BidListId;
-    @Column(name = "account")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    private Integer bidListId;
+    @Column(length = 30)
+    @Size(max = 30)
+    @NotBlank(message = "Account is mandatory")
     private String account;
-    @Column(name = "type")
+    @Column(length = 30)
+    @Size(max = 30)
+    @NotBlank(message = "Type is mandatory")
     private String type;
-    @Column(name = "bidQuantity")
+    @Column
     private Double bidQuantity;
-    @Column(name = "askQuantity")
+    @Column
     private Double askQuantity;
-    @Column(name = "bid")
+    @Column
     private Double bid;
-    @Column(name = "ask")
+    @Column
     private Double ask;
-    @Column(name = "benchmark")
+    @Column(length = 125)
+    @Size(max = 125)
     private String benchmark;
-    @Column(name = "bidListDate")
+    @Column
     private Timestamp bidListDate;
-    @Column(name = "commentary")
+    @Column(length = 125)
+    @Size(max = 125)
     private String commentary;
-    @Column(name = "security")
+    @Column(length = 125)
+    @Size(max = 125)
     private String security;
-    @Column(name = "status")
+    @Column(length = 10)
+    @Size(max = 10)
     private String status;
-    @Column(name = "trader")
+    @Column(length = 125)
+    @Size(max = 125)
     private String trader;
-    @Column(name = "book")
+    @Column(length = 125)
+    @Size(max = 125)
     private String book;
-    @Column(name = "creationName")
+    @Column(length = 125)
+    @Size(max = 125)
     private String creationName;
-    @Column(name = "creationDate")
+    @Column
     private Timestamp creationDate;
-    @Column(name = "revisionName")
+    @Column(length = 125)
+    @Size(max = 125)
     private String revisionName;
-    @Column(name = "revisionDate")
+    @Column
     private Timestamp revisionDate;
-    @Column(name = "dealName")
+    @Column(length = 125)
+    @Size(max = 125)
     private String dealName;
-    @Column(name = "dealType")
+    @Column(length = 125)
+    @Size(max = 125)
     private String dealType;
-    @Column(name = "sourceListId")
+    @Column(length = 125)
+    @Size(max = 125)
     private String sourceListId;
-    @Column(name = "side")
+    @Column(length = 125)
+    @Size(max = 125)
     private String side;
 
     public BidList() {
@@ -63,9 +82,12 @@ public class BidList {
         this.bidQuantity = bidQuantity;
     }
 
-
     public Integer getBidListId() {
-        return BidListId;
+        return bidListId;
+    }
+
+    public void setBidListId(Integer bidListId) {
+        this.bidListId = bidListId;
     }
 
     public String getAccount() {
