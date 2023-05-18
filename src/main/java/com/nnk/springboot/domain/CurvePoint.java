@@ -14,7 +14,7 @@ public class CurvePoint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column
-    @Positive(message = "Must be positive")
+    @Positive(message = "Must be a positive number")
     @NotNull(message = "Curve Id is mandatory")
     private Integer curveId;
     @Column
@@ -29,6 +29,7 @@ public class CurvePoint {
     private Timestamp creationDate;
 
     public CurvePoint() {
+        // Empty constructor is used by JPA to create entities
     }
 
     public CurvePoint(Integer curveId, Double term, Double value) {

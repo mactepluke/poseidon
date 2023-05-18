@@ -1,25 +1,19 @@
-package com.nnk.springboot;
+package com.nnk.springboot.service;
 
 import com.nnk.springboot.domain.RuleName;
-import com.nnk.springboot.service.IRuleNameService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@AutoConfigureMockMvc(addFilters = false)
-class RuleTests {
+class RuleNameServiceTests {
 
     @Autowired
     private IRuleNameService ruleNameService;
-    @Autowired
-    private MockMvc mockMvc;
 
     @Test
     void ruleServiceTest() {
@@ -32,7 +26,7 @@ class RuleTests {
 
         // Update
         rule.setName("Rule Name Update");
-        rule = ruleNameService.save(rule);
+        rule = ruleNameService.update(rule.getId(), rule);
         assertEquals("Rule Name Update", rule.getName());
 
         // Find

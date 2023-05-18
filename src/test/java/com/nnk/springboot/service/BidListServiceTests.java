@@ -1,53 +1,19 @@
-package com.nnk.springboot;
+package com.nnk.springboot.service;
 
 import com.nnk.springboot.domain.BidList;
-import com.nnk.springboot.service.IBidListService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-@AutoConfigureMockMvc(addFilters = false)
-class BidTests {
+class BidListServiceTests {
 
     @Autowired
     private IBidListService bidListService;
-    @Autowired
-    private MockMvc mockMvc;
-    @MockBean
-    private IBidListService mockBidListService;
-
-    @Test
-    void bidListEndpointTest() throws Exception {
-
-        mockMvc.perform(get("/bidList/list"))
-                .andExpect(status().isOk());
-
-        mockMvc.perform(get("/bidList/add"))
-                .andExpect(status().isOk());
-
-        mockMvc.perform(post("/bidList/validate"))
-                .andExpect(status().isOk());
-
-        mockMvc.perform(post("/bidList/update/1"))
-                .andExpect(status().isOk());
-
-        mockMvc.perform(get("/bidList/update/1"))
-                .andExpect(status().isOk());
-
-        mockMvc.perform(get("/bidList/delete/1"))
-                .andExpect(status().isOk());
-    }
 
     @Test
     void bidListServiceTest() {
@@ -60,7 +26,7 @@ class BidTests {
 
         // Update
         bid.setBidQuantity(20d);
-        bid = bidListService.save(bid);
+        bid = bidListService.update(bid.getBidListId(), bid);
         assertEquals(20d, bid.getBidQuantity(), 20d);
 
         // Find

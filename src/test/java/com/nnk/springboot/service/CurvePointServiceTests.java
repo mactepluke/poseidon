@@ -1,25 +1,19 @@
-package com.nnk.springboot;
+package com.nnk.springboot.service;
 
 import com.nnk.springboot.domain.CurvePoint;
-import com.nnk.springboot.service.ICurvePointService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@AutoConfigureMockMvc(addFilters = false)
-class CurvePointTests {
+class CurvePointServiceTests {
 
     @Autowired
     private ICurvePointService curvePointService;
-    @Autowired
-    private MockMvc mockMvc;
 
     @Test
     void curvePointServiceTest() {
@@ -32,7 +26,7 @@ class CurvePointTests {
 
         // Update
         curvePoint.setCurveId(20);
-        curvePoint = curvePointService.save(curvePoint);
+        curvePoint = curvePointService.update(curvePoint.getId(), curvePoint);
         assertEquals(20, (int) curvePoint.getCurveId());
 
         // Find

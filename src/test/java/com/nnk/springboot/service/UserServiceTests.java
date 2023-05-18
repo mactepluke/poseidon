@@ -1,25 +1,19 @@
-package com.nnk.springboot;
+package com.nnk.springboot.service;
 
 import com.nnk.springboot.domain.User;
-import com.nnk.springboot.service.IUserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@AutoConfigureMockMvc(addFilters = false)
-class UserTests {
+class UserServiceTests {
 
     @Autowired
     private IUserService userService;
-    @Autowired
-    private MockMvc mockMvc;
 
     @Test
     void userServiceTest() {
@@ -32,7 +26,7 @@ class UserTests {
 
         // Update
         user.setUsername("updatedusername");
-        user = userService.save(user);
+        user = userService.update(user.getId(), user);
         assertEquals("updatedusername", user.getUsername());
 
         // Find

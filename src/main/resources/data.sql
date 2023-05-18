@@ -1,4 +1,4 @@
 INSERT INTO Users (fullname, username, password, role)
-VALUES ('Administrator', 'admin', '$2a$10$pBV8ILO/s/nao4wVnGLrh.sa/rnr5pDpbeC4E.KNzQWoy8obFZdaa', 'ADMIN');
+VALUES ('Administrator', 'admin', '$2a$12$/gtBAjv6KiamUykFRwlzzu.CPZAnWwSheR8gll/RtnpFeV0MGsZ1y', 'ADMIN');
 INSERT INTO Users (fullname, username, password, role)
-VALUES ('User', 'user', '$2a$10$pBV8ILO/s/nao4wVnGLrh.sa/rnr5pDpbeC4E.KNzQWoy8obFZdaa', 'USER');
+VALUES ('User', 'user', '$2a$12$/gtBAjv6KiamUykFRwlzzu.CPZAnWwSheR8gll/RtnpFeV0MGsZ1y', 'USER');

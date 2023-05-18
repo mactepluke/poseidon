@@ -33,3 +33,4 @@
 
 1. Create user service to load user from database and place in package com.nnk.springboot.service
 2. Add configuration class and place in package com.nnk.springboot.config
+3. THE DEFAULT PASSWORD FOR USER AND ADMIN INSERTED INTO THE DATABASE IS: "password"

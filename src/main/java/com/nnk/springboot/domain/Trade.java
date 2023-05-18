@@ -2,7 +2,6 @@ package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
@@ -25,14 +24,16 @@ public class Trade {
     @NotBlank(message = "Type is mandatory")
     private String type;
     @Column
-    @NotNull(message = "Buy quantity is mandatory")
-    @Positive
+    @Positive(message = "Must be positive")
     private Double buyQuantity;
     @Column
+    @Positive(message = "Must be positive")
     private Double sellQuantity;
     @Column
+    @Positive(message = "Must be positive")
     private Double buyPrice;
     @Column
+    @Positive(message = "Must be positive")
     private Double sellPrice;
     @Column
     private Timestamp tradeDate;
@@ -75,6 +76,7 @@ public class Trade {
 
 
     public Trade() {
+        // Empty constructor is used by JPA to create entities
     }
 
     public Trade(String account, String type) {

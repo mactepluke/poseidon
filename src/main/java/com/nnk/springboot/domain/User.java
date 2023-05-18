@@ -2,6 +2,7 @@ package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "Users")
@@ -15,6 +16,8 @@ public class User {
     private String username;
     @NotBlank(message = "Password is mandatory")
     @Column
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$",
+            message = "Password must be 8-20 chars, at least 1 small cap, 1 big cap and 1 special char")
     private String password;
     @NotBlank(message = "FullName is mandatory")
     @Column
@@ -24,6 +27,14 @@ public class User {
     private String role;
 
     public User() {
+        // Empty constructor is used by JPA to create entities
+    }
+
+    public User(String username, String password, String fullname, String role) {
+        this.username = username;
+        this.password = password;
+        this.fullname = fullname;
+        this.role = role;
     }
 
     public Integer getId() {

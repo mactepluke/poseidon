@@ -21,11 +21,12 @@ public class Rating {
     @Size(max = 125)
     private String fitchRating;
     @Column
-    @Positive
+    @Positive(message = "Must be positive")
     @NotNull(message = "Order number is mandatory")
     private Integer orderNumber;
 
     public Rating() {
+        // Empty constructor is used by JPA to create entities
     }
 
     public Rating(String moodysRating, String sandpRating, String fitchRating, Integer orderNumber) {

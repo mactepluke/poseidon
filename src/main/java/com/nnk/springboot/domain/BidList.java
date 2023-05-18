@@ -2,6 +2,8 @@ package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 import java.sql.Timestamp;
@@ -23,12 +25,17 @@ public class BidList {
     @NotBlank(message = "Type is mandatory")
     private String type;
     @Column
+    @NotNull(message = "Bid Quantity is mandatory")
+    @Positive(message = "Must be positive")
     private Double bidQuantity;
     @Column
+    @Positive(message = "Must be positive")
     private Double askQuantity;
     @Column
+    @Positive(message = "Must be positive")
     private Double bid;
     @Column
+    @Positive(message = "Must be positive")
     private Double ask;
     @Column(length = 125)
     @Size(max = 125)
@@ -74,6 +81,7 @@ public class BidList {
     private String side;
 
     public BidList() {
+        // Empty constructor is used by JPA to create entities
     }
 
     public BidList(String account, String type, Double bidQuantity) {

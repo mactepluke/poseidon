@@ -32,6 +32,7 @@ public class RuleName {
     private String sqlPart;
 
     public RuleName() {
+        // Empty constructor is used by JPA to create entities
     }
 
     public RuleName(String name, String description, String json, String template, String sqlStr, String sqlPart) {

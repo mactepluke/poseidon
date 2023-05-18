@@ -1,25 +1,19 @@
-package com.nnk.springboot;
+package com.nnk.springboot.service;
 
 import com.nnk.springboot.domain.Trade;
-import com.nnk.springboot.service.ITradeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@AutoConfigureMockMvc(addFilters = false)
-class TradeTests {
+class TradeServiceTests {
 
     @Autowired
     private ITradeService tradeService;
-    @Autowired
-    private MockMvc mockMvc;
 
     @Test
     void tradeServiceTest() {
@@ -32,7 +26,7 @@ class TradeTests {
 
         // Update
         trade.setAccount("Trade Account Update");
-        trade = tradeService.save(trade);
+        trade = tradeService.update(trade.getTradeId(), trade);
         assertEquals("Trade Account Update", trade.getAccount());
 
         // Find
