@@ -22,8 +22,8 @@ public class LoginPageFilter extends GenericFilterBean {
         HttpServletResponse servletResponse = (HttpServletResponse) response;
 
         if (isAuthenticated() && (
-                ("/login".equals(servletRequest.getRequestURI()))
-                        || ("/user/list".equals(servletRequest.getRequestURI()))
+                (servletRequest.getRequestURI().contains("login"))
+                        || (servletRequest.getRequestURI().contains("user"))
                         || ("/".equals(servletRequest.getRequestURI()))
         )) {
 
